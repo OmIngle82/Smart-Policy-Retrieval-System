@@ -1,0 +1,20 @@
+# Core AI & LLM
+langchain==0.1.16
+langchain-community==0.0.34
+ollama==0.1.8
+
+# Vector Database & Embeddings
+chromadb==0.4.24
+sentence-transformers==2.7.0
+
+# Document Processing (PDFs)
+pypdf2==3.0.1
+pdfplumber==0.11.0
+
+# Backend / API (If you use Python for Backend)
+fastapi==0.110.1
+uvicorn==0.29.0
+python-multipart==0.0.9
+
+# Utilities
+python-dotenv==1.0.1
