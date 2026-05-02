@@ -95,42 +95,42 @@ export default function AuthPage({ onLoginSuccess }) {
 
                 <form onSubmit={handleSubmit}>
                     <div style={{ marginBottom: '1.5rem' }}>
-                        <label style={{ display: 'block', marginBottom: '0.6rem', fontSize: '0.85rem', fontWeight: 700, color: '#fff', opacity: 0.8 }}>Username</label>
+                        <label style={{ display: 'block', marginBottom: '0.6rem', fontSize: '0.85rem', fontWeight: 700, color: 'var(--clr-text-main)', opacity: 0.8 }}>Username</label>
                         <div style={{ position: 'relative' }}>
                             <User size={18} style={{ position: 'absolute', left: '16px', top: '50%', transform: 'translateY(-50%)', color: 'var(--clr-text-muted)' }} />
                             <input
                                 name="username" type="text" required
                                 placeholder="analyst_id"
                                 value={form.username} onChange={handleChange}
-                                style={{ width: '100%', padding: '0.85rem 1rem 0.85rem 3rem', background: 'rgba(255,255,255,0.03)', border: '1px solid var(--clr-border)', borderRadius: '16px', color: '#fff', outline: 'none', transition: '0.3s' }}
+                                style={{ width: '100%', padding: '0.85rem 1rem 0.85rem 3rem', background: 'var(--clr-input-bg)', border: '1px solid var(--clr-border)', borderRadius: '16px', color: 'var(--clr-input-text)', outline: 'none', transition: '0.3s' }}
                             />
                         </div>
                     </div>
 
                     {mode === 'register' && (
                         <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} style={{ marginBottom: '1.5rem' }}>
-                            <label style={{ display: 'block', marginBottom: '0.6rem', fontSize: '0.85rem', fontWeight: 700, color: '#fff', opacity: 0.8 }}>Email Address</label>
+                            <label style={{ display: 'block', marginBottom: '0.6rem', fontSize: '0.85rem', fontWeight: 700, color: 'var(--clr-text-main)', opacity: 0.8 }}>Email Address</label>
                             <div style={{ position: 'relative' }}>
                                 <Mail size={18} style={{ position: 'absolute', left: '16px', top: '50%', transform: 'translateY(-50%)', color: 'var(--clr-text-muted)' }} />
                                 <input
                                     name="email" type="email" required
                                     placeholder="name@ministry.gov"
                                     value={form.email} onChange={handleChange}
-                                    style={{ width: '100%', padding: '0.85rem 1rem 0.85rem 3rem', background: 'rgba(255,255,255,0.03)', border: '1px solid var(--clr-border)', borderRadius: '16px', color: '#fff', outline: 'none' }}
+                                    style={{ width: '100%', padding: '0.85rem 1rem 0.85rem 3rem', background: 'var(--clr-input-bg)', border: '1px solid var(--clr-border)', borderRadius: '16px', color: 'var(--clr-input-text)', outline: 'none' }}
                                 />
                             </div>
                         </motion.div>
                     )}
 
                     <div style={{ marginBottom: '2.5rem' }}>
-                        <label style={{ display: 'block', marginBottom: '0.6rem', fontSize: '0.85rem', fontWeight: 700, color: '#fff', opacity: 0.8 }}>Security Password</label>
+                        <label style={{ display: 'block', marginBottom: '0.6rem', fontSize: '0.85rem', fontWeight: 700, color: 'var(--clr-text-main)', opacity: 0.8 }}>Security Password</label>
                         <div style={{ position: 'relative' }}>
                             <Lock size={18} style={{ position: 'absolute', left: '16px', top: '50%', transform: 'translateY(-50%)', color: 'var(--clr-text-muted)' }} />
                             <input
                                 name="password" type="password" required
                                 placeholder="••••••••"
                                 value={form.password} onChange={handleChange}
-                                style={{ width: '100%', padding: '0.85rem 1rem 0.85rem 3rem', background: 'rgba(255,255,255,0.03)', border: '1px solid var(--clr-border)', borderRadius: '16px', color: '#fff', outline: 'none' }}
+                                style={{ width: '100%', padding: '0.85rem 1rem 0.85rem 3rem', background: 'var(--clr-input-bg)', border: '1px solid var(--clr-border)', borderRadius: '16px', color: 'var(--clr-input-text)', outline: 'none' }}
                             />
                         </div>
                     </div>

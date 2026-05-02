@@ -5,7 +5,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Sparkles, History, Plus, MessageSquare, LogOut, Shield, X } from 'lucide-react';
+import { Sparkles, History, Plus, MessageSquare, LogOut, Shield, X, Sun, Moon } from 'lucide-react';
 import {
   getUserRoles,
   logout,
@@ -26,6 +26,14 @@ export default function App() {
   const [roles, setRoles] = useState([]);
   const [sessions, setSessions] = useState([]);
   const [currentSessionId, setCurrentSessionId] = useState(null);
+  const [theme, setTheme] = useState(localStorage.getItem('app-theme') || 'dark');
+
+  useEffect(() => {
+    document.documentElement.className = theme === 'light' ? 'light-theme' : '';
+    localStorage.setItem('app-theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => setTheme(prev => prev === 'dark' ? 'light' : 'dark');
 
 
   useEffect(() => {
@@ -107,9 +115,14 @@ export default function App() {
   const isAdmin = roles.includes('admin');
 
   return (
-    <div className="chat-layout">
+    <div className={`chat-layout ${theme === 'light' ? 'light-theme' : ''}`}>
       <Toaster position="top-center" toastOptions={{
-        style: { background: 'rgba(25, 10, 35, 0.9)', color: '#fff', border: '1px solid rgba(138,43,226,0.3)', backdropFilter: 'blur(10px)' },
+        style: { 
+          background: theme === 'dark' ? 'rgba(25, 10, 35, 0.9)' : 'rgba(255, 255, 255, 0.9)', 
+          color: theme === 'dark' ? '#fff' : '#1a1625', 
+          border: theme === 'dark' ? '1px solid rgba(138,43,226,0.3)' : '1px solid rgba(122, 34, 255, 0.2)', 
+          backdropFilter: 'blur(10px)' 
+        },
         success: { iconTheme: { primary: '#7a22ff', secondary: '#fff' } }
       }} />
 
@@ -118,14 +131,35 @@ export default function App() {
         animate={{ x: 0 }}
         className="chat-sidebar"
       >
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem', marginBottom: '2rem', padding: '0 0.5rem' }}>
-          <div style={{ background: 'var(--clr-primary)', padding: '0.6rem', borderRadius: '14px', color: '#fff', boxShadow: '0 8px 16px rgba(138, 43, 226, 0.4)' }}>
-            <Sparkles size={22} />
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '2rem', padding: '0 0.5rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
+            <div style={{ background: 'var(--clr-primary)', padding: '0.6rem', borderRadius: '14px', color: '#fff', boxShadow: '0 8px 16px rgba(138, 43, 226, 0.4)' }}>
+              <Sparkles size={22} />
+            </div>
+            <div>
+              <h1 style={{ fontSize: '1.3rem', fontWeight: 800, margin: 0, letterSpacing: '-0.8px', color: 'var(--clr-text-main)' }}>PolicyAI</h1>
+              <p style={{ fontSize: '0.65rem', color: 'var(--clr-text-muted)', textTransform: 'uppercase', letterSpacing: '1.5px', fontWeight: 700 }}>Portal Hub</p>
+            </div>
           </div>
-          <div>
-            <h1 style={{ fontSize: '1.3rem', fontWeight: 800, margin: 0, letterSpacing: '-0.8px' }}>PolicyAI</h1>
-            <p style={{ fontSize: '0.65rem', color: 'var(--clr-text-muted)', textTransform: 'uppercase', letterSpacing: '1.5px', fontWeight: 700 }}>Portal Hub</p>
-          </div>
+          <button 
+            onClick={toggleTheme}
+            style={{ 
+              background: 'rgba(138, 43, 226, 0.1)', 
+              border: '1px solid var(--clr-border)', 
+              color: 'var(--clr-primary)',
+              width: '38px',
+              height: '38px',
+              borderRadius: '12px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              cursor: 'pointer',
+              transition: 'all 0.3s ease'
+            }}
+            title={theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+          >
+            {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+          </button>
         </div>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', marginBottom: '2.5rem' }}>
@@ -210,7 +244,7 @@ export default function App() {
               {roles[0]?.[0]?.toUpperCase() || 'U'}
             </div>
             <div style={{ overflow: 'hidden' }}>
-              <div style={{ fontSize: '0.9rem', fontWeight: 800, color: '#fff', letterSpacing: '-0.3px' }}>Policy Analyst</div>
+              <div style={{ fontSize: '0.9rem', fontWeight: 800, color: 'var(--clr-text-main)', letterSpacing: '-0.3px' }}>Policy Analyst</div>
               <div style={{ fontSize: '0.65rem', color: 'var(--clr-text-muted)', whiteSpace: 'nowrap', textOverflow: 'ellipsis', overflow: 'hidden', textTransform: 'uppercase', fontWeight: 700, letterSpacing: '0.8px' }}>{roles.join(' • ')}</div>
             </div>
           </div>
