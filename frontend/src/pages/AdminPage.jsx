@@ -124,11 +124,11 @@ export default function AdminPage() {
             style={{ padding: '2rem 4rem 6rem' }}
         >
             <header className="page-header" style={{ marginBottom: '3rem', display: 'flex', alignItems: 'center', gap: '1.25rem' }}>
-                <div style={{ background: 'var(--clr-primary)', padding: '0.85rem', borderRadius: '16px', color: '#fff', boxShadow: '0 8px 20px rgba(79, 142, 247, 0.3)' }}>
+                <div style={{ background: 'var(--clr-primary)', padding: '0.85rem', borderRadius: '16px', color: '#fff', boxShadow: '0 8px 20px var(--clr-primary-glow)' }}>
                     <Shield size={32} />
                 </div>
                 <div>
-                    <h2 style={{ fontSize: '2rem', fontWeight: 800, margin: 0, letterSpacing: '-0.5px' }}>Management Console</h2>
+                    <h2 style={{ fontSize: '2rem', fontWeight: 800, margin: 0, letterSpacing: '-0.5px', color: 'var(--clr-text-main)' }}>Management Console</h2>
                     <p style={{ color: 'var(--clr-text-muted)', fontSize: '0.95rem' }}>Governance hub for policies, role-based access, and indexing health.</p>
                 </div>
             </header>
@@ -159,7 +159,7 @@ export default function AdminPage() {
                             <h3 style={{ margin: 0, display: 'flex', alignItems: 'center', gap: '0.75rem', fontSize: '1.25rem' }}>
                                 <FileText size={22} color="var(--clr-primary)" /> Policy Warehouse
                             </h3>
-                            <button className="chip" onClick={loadDocs} style={{ cursor: 'pointer', background: 'rgba(255,255,255,0.05)', border: '1px solid var(--clr-border)', color: '#fff', borderRadius: '10px', padding: '6px 14px', fontSize: '0.8rem', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                            <button className="chip" onClick={loadDocs} style={{ cursor: 'pointer', background: 'var(--clr-panel-bg)', border: '1px solid var(--clr-border)', color: 'var(--clr-text-main)', borderRadius: '10px', padding: '6px 14px', fontSize: '0.8rem', display: 'flex', alignItems: 'center', gap: '6px' }}>
                                 <RefreshCw size={14} className={loadingDocs ? 'animate-spin' : ''} /> Refresh
                             </button>
                         </div>
@@ -173,7 +173,7 @@ export default function AdminPage() {
                                             whileHover={{ x: 5 }}
                                             style={{
                                                 display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-                                                padding: '1.25rem', background: 'rgba(255,255,255,0.02)',
+                                                padding: '1.25rem', background: 'var(--clr-panel-bg)',
                                                 border: '1px solid var(--clr-border)', borderRadius: '20px'
                                             }}
                                         >
@@ -220,12 +220,12 @@ export default function AdminPage() {
                             <div style={{ marginBottom: '1.5rem' }}>
                                 {uploading ? <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 1 }}><Loader2 size={40} color="var(--clr-primary)" /></motion.div> : <UploadCloud size={40} color="var(--clr-text-muted)" />}
                             </div>
-                            <div style={{ fontSize: '1.1rem', fontWeight: 700, color: '#fff' }}>{uploading ? 'Finalizing Ingestion...' : 'Click or Drag PDF to Index'}</div>
+                            <div style={{ fontSize: '1.1rem', fontWeight: 700, color: 'var(--clr-text-main)' }}>{uploading ? 'Finalizing Ingestion...' : 'Click or Drag PDF to Index'}</div>
                             <p style={{ fontSize: '0.85rem', color: 'var(--clr-text-muted)', marginTop: '0.5rem' }}>Auto-processing OCR & High-Dimensional Vectors</p>
 
                             {uploading && (
                                 <div style={{ width: '100%', maxWidth: '300px', marginTop: '1.5rem' }}>
-                                    <div style={{ width: '100%', background: 'rgba(255,255,255,0.05)', height: '5px', borderRadius: '3px', overflow: 'hidden' }}>
+                                    <div style={{ width: '100%', background: 'var(--clr-panel-bg)', height: '5px', borderRadius: '3px', overflow: 'hidden' }}>
                                         <motion.div
                                             initial={{ width: 0 }}
                                             animate={{ width: `${uploadProgress}%` }}
@@ -257,16 +257,16 @@ export default function AdminPage() {
                             {loadingUsers ? <div style={{ textAlign: 'center', padding: '2rem', color: 'var(--clr-text-muted)' }}>Retrieving identity list...</div> :
                                 users.map(u => (
                                     <div key={u.id} style={{
-                                        padding: '1.25rem', background: 'rgba(255,255,255,0.03)',
+                                        padding: '1.25rem', background: 'var(--clr-panel-bg)',
                                         border: '1px solid var(--clr-border)', borderRadius: '20px'
                                     }}>
                                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                                             <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                                                <div style={{ width: 44, height: 44, borderRadius: '12px', background: 'rgba(255,255,255,0.04)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                                                <div style={{ width: 44, height: 44, borderRadius: '12px', background: 'var(--clr-panel-bg)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                                                     <UserPlus size={20} color="var(--clr-text-muted)" />
                                                 </div>
                                                 <div>
-                                                    <div style={{ fontWeight: 700, fontSize: '0.95rem' }}>{u.username}</div>
+                                                    <div style={{ fontWeight: 700, fontSize: '0.95rem', color: 'var(--clr-text-main)' }}>{u.username}</div>
                                                     <div style={{ fontSize: '0.75rem', color: 'var(--clr-text-muted)' }}>{u.email}</div>
                                                 </div>
                                             </div>
@@ -277,7 +277,7 @@ export default function AdminPage() {
                                                 value={u.role}
                                                 onChange={(e) => handleRoleChange(u.id, e.target.value)}
                                                 style={{
-                                                    flex: 1, background: 'rgba(10,12,16,0.8)', color: '#fff',
+                                                    flex: 1, background: 'var(--clr-input-bg)', color: 'var(--clr-input-text)',
                                                     border: '1px solid var(--clr-border)', borderRadius: '12px',
                                                     fontSize: '0.85rem', padding: '8px 12px', outline: 'none'
                                                 }}

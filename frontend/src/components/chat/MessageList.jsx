@@ -65,7 +65,7 @@ function HighlightText({ text, query }) {
     return (
         <span>
             {parts.map((part, i) => regex.test(part) ?
-                <mark key={i} style={{ background: 'rgba(79, 142, 247, 0.25)', color: '#fff', borderRadius: '4px', padding: '0 4px' }}>{part}</mark>
+                <mark key={i} style={{ background: 'var(--clr-primary-glow)', color: 'inherit', borderRadius: '4px', padding: '0 4px', fontWeight: 600 }}>{part}</mark>
                 : part)}
         </span>
     );

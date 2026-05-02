@@ -57,9 +57,9 @@ export default function LandingPage({ onStart }) {
                 }}>
                     Boost your <br />
                     <span style={{
-                        background: 'linear-gradient(to right, #8a2be2, #00f0ff)',
+                        background: 'linear-gradient(to right, var(--clr-primary), #3b74ca)',
                         WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
-                        textShadow: '0 0 30px rgba(138,43,226,0.3)'
+                        textShadow: '0 0 30px var(--clr-primary-glow)'
                     }}>research with AI.</span>
                 </motion.h1>
 
@@ -122,8 +122,8 @@ function FeatureCard({ icon, title, desc }) {
             }}
         >
             <div style={{
-                width: 50, height: 50, borderRadius: '12px', background: 'rgba(0,0,0,0.3)',
-                display: 'flex', alignItems: 'center', justifyContent: 'center', border: '1px solid rgba(255,255,255,0.05)'
+                width: 50, height: 50, borderRadius: '12px', background: 'var(--clr-primary-glow)',
+                display: 'flex', alignItems: 'center', justifyContent: 'center', border: '1px solid var(--clr-border)'
             }}>
                 {icon}
             </div>

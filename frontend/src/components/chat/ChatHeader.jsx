@@ -32,22 +32,20 @@ export default function ChatHeader({ activeAttachedDocs, inferenceMode, setMode,
                     </motion.div>
                 )}
             </div>
-            <div style={{ display: 'flex', gap: '0.6rem', padding: '4px', background: 'rgba(255,255,255,0.04)', borderRadius: '14px' }}>
+            <div style={{ display: 'flex', gap: '0.6rem', padding: '4px', background: 'var(--clr-panel-bg)', borderRadius: '14px' }}>
                 <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className={`chip ${inferenceMode === 'local' ? 'active' : ''}`}
                     onClick={() => setMode('local')}
-                    style={{ background: inferenceMode === 'local' ? 'var(--clr-primary)' : 'transparent', border: 'none', color: '#fff', padding: '6px 14px', borderRadius: '10px', fontSize: '0.75rem', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '6px', transition: '0.3s' }}
+                    style={{ background: inferenceMode === 'local' ? 'var(--clr-primary)' : 'transparent', border: 'none', color: inferenceMode === 'local' ? '#fff' : 'var(--clr-text-main)', padding: '6px 14px', borderRadius: '10px', fontSize: '0.75rem', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '6px', transition: '0.3s' }}
                 >
                     <Cpu size={14} /> Local
                 </motion.button>
                 <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className={`chip ${inferenceMode === 'cloud' ? 'active' : ''}`}
                     onClick={() => setMode('cloud')}
-                    style={{ background: inferenceMode === 'cloud' ? 'var(--clr-primary)' : 'transparent', border: 'none', color: '#fff', padding: '6px 14px', borderRadius: '10px', fontSize: '0.75rem', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '6px', transition: '0.3s' }}
+                    style={{ background: inferenceMode === 'cloud' ? 'var(--clr-primary)' : 'transparent', border: 'none', color: inferenceMode === 'cloud' ? '#fff' : 'var(--clr-text-main)', padding: '6px 14px', borderRadius: '10px', fontSize: '0.75rem', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '6px', transition: '0.3s' }}
                 >
                     <Cloud size={14} /> Cloud
                 </motion.button>
