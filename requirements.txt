@@ -1,20 +1,50 @@
-# Core AI & LLM
+# ──────────────────────────────────────────────────────────────────────────────
+# AI-Based Policy Retrieval System — Python Backend Requirements
+# Install with: pip install -r requirements.txt
+# ──────────────────────────────────────────────────────────────────────────────
+
+# ── Core AI & LLM ──────────────────────────────────────────────────────────────
 langchain==0.1.16
 langchain-community==0.0.34
 ollama==0.1.8
 
-# Vector Database & Embeddings
+# ── Vector Database & Embeddings ───────────────────────────────────────────────
 chromadb==0.4.24
 sentence-transformers==2.7.0
 
-# Document Processing (PDFs)
+# ── Hybrid Search (BM25 + Vector) ──────────────────────────────────────────────
+rank-bm25==0.2.2
+
+# ── Document Processing (PDFs & OCR) ──────────────────────────────────────────
 pypdf2==3.0.1
 pdfplumber==0.11.0
+easyocr==1.7.1
+opencv-python-headless==4.9.0.80
+torch==2.2.2 --extra-index-url https://download.pytorch.org/whl/cpu
+torchvision==0.17.2 --extra-index-url https://download.pytorch.org/whl/cpu
 
-# Backend / API (If you use Python for Backend)
+# ── Backend / API ──────────────────────────────────────────────────────────────
 fastapi==0.110.1
 uvicorn==0.29.0
 python-multipart==0.0.9
+httpx==0.27.0           # Required by FastAPI's TestClient for unit tests
 
-# Utilities
+# ── Authentication ─────────────────────────────────────────────────────────────
+bcrypt==4.1.3           # Password hashing
+PyJWT==2.8.0            # JWT token generation and validation
+
+# ── Database ───────────────────────────────────────────────────────────────────
+mysql-connector-python==8.3.0
+
+# ── Cloud AI (Gemini) ──────────────────────────────────────────────────────────
+google-generativeai==0.5.4
+
+# ── Utilities ──────────────────────────────────────────────────────────────────
 python-dotenv==1.0.1
+pydantic[email]==2.6.4  # EmailStr validation in FastAPI
+redis==5.0.3
+
+# ── Testing ────────────────────────────────────────────────────────────────────
+pytest==8.2.0
+pytest-asyncio==0.23.6
+hypothesis==6.100.0
